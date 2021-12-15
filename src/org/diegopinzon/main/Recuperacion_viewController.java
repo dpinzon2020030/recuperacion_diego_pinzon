@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import java.sql.*;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -157,5 +158,17 @@ public class Recuperacion_viewController implements Initializable {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleMouseAction(MouseEvent event) {
+        Materia materia = tvMateria.getSelectionModel().getSelectedItem();
+        
+        System.out.println("id" + materia.getId());
+        tfId.setText("" + materia.getId());
+        tfCatedratico.setText(materia.getCatedratico());
+        tfSalon.setText(materia.getSalon());
+        tfCiclo_Escolar.setText("" + materia.getCiclo_escolar());
+        tfCupo_Maximo.setText("" + materia.getCupo_maximo());
     }
 }
