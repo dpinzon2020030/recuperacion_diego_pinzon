@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="686.0" layoutY="440.0" mnemonicParsing="false" text="Hola" />
+      <VBox layoutX="23.0" layoutY="26.0" prefHeight="200.0" prefWidth="100.0" spacing="14.0">
+         <children>
+            <Label text="ID" />
+            <Label layoutX="10.0" layoutY="10.0" text="Title" />
+            <Label layoutX="10.0" layoutY="27.0" text="Author" />
+            <Label layoutX="10.0" layoutY="44.0" text="Year" />
+            <Label layoutX="10.0" layoutY="61.0" text="Pages" />
+         </children>
+      </VBox>
+      <VBox layoutX="130.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+         <children>
+            <TextField />
+            <TextField layoutX="10.0" layoutY="10.0" />
+            <TextField layoutX="10.0" layoutY="35.0" />
+            <TextField layoutX="10.0" layoutY="60.0" />
+            <TextField layoutX="10.0" layoutY="85.0" />
+         </children>
+      </VBox>
+      <TableView layoutX="297.0" layoutY="14.0" prefHeight="200.0" prefWidth="467.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="75.0" text="Title" />
+            <TableColumn prefWidth="75.0" text="Author" />
+            <TableColumn prefWidth="75.0" text="Year" />
+            <TableColumn prefWidth="75.0" text="Pages" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
