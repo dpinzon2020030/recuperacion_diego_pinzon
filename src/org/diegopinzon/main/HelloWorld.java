@@ -19,7 +19,7 @@ public class HelloWorld extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Button btn1 = new Button("Hello World!!!");
+        Button btn1 = new Button("supreme!!!");
         StackPane root = new StackPane();
         root.getChildren().add(btn1);
         Scene scene = new Scene(root, 600, 400);
