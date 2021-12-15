@@ -71,7 +71,7 @@ public class Recuperacion_viewController implements Initializable {
     public Connection getConnection() {
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/diego", "root", "adminval");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/in5bm_recuperacion", "root", "adminval");
             return conn;
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
