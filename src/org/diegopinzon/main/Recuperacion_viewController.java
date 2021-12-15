@@ -61,6 +61,7 @@ public class Recuperacion_viewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        showBooks();
     }
 
     @FXML
@@ -70,7 +71,7 @@ public class Recuperacion_viewController implements Initializable {
     public Connection getConnection() {
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root", "adminval");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/diego", "root", "adminval");
             return conn;
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
@@ -108,5 +109,6 @@ public class Recuperacion_viewController implements Initializable {
         colYear.setCellValueFactory(new PropertyValueFactory<Books, Integer>("year"));
         colPages.setCellValueFactory(new PropertyValueFactory<Books, Integer>("pages"));
 
+        tvBooks.setItems(list);
     }
 }
