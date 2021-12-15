@@ -66,6 +66,17 @@ public class Recuperacion_viewController implements Initializable {
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
+        if (event.getSource() == btnInsert) {
+            insertRecord();
+        }
+        
+        if (event.getSource() == btnUpdate) {
+            updateRecord();
+        }
+        
+        if (event.getSource() == btnDelete) {
+            deleteRecord();
+        }
     }
 
     public Connection getConnection() {
@@ -110,5 +121,41 @@ public class Recuperacion_viewController implements Initializable {
         colCupo_Maximo.setCellValueFactory(new PropertyValueFactory<Materia, Integer>("cupo_maximo"));
 
         tvMateria.setItems(list);
+    }
+
+    private void insertRecord() {
+        String query = "INSERT INTO materia (id,catedratico,salon,ciclo_escolar,cupo_maximo)"
+                + " VALUES(" + tfId.getText() + ",'" + tfCatedratico.getText() + "','" + tfSalon.getText() + "'," + tfCiclo_Escolar.getText() + "," + tfCupo_Maximo.getText() + ")";
+        executeQuery(query);
+        showMateria();
+    }
+
+    private void updateRecord() {
+        String query = "UPDATE materia"
+                + " SET catedratico = '" + tfCatedratico.getText() + "'"
+                + ",salon = '" + tfSalon.getText() + "'"
+                + ",ciclo_escolar = " + tfCiclo_Escolar.getText()
+                + ",cupo_maximo = " + tfCupo_Maximo.getText()
+                + " WHERE id = " + tfId.getText();
+        executeQuery(query);
+        showMateria();
+    }
+
+    private void deleteRecord() {
+        String query = "DELETE FROM materia"
+                + " WHERE id = " + tfId.getText();
+        executeQuery(query);
+        showMateria();
+    }
+    
+    private void executeQuery(String query) {
+        Connection conn = getConnection();
+        Statement st;
+        try {
+            st = conn.createStatement();
+            st.executeUpdate(query);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
