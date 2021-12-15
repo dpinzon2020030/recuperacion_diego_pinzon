@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Luis Rangel
+ * @author Diego Pinzon
  */
 public class HelloWorld extends Application {
 

@@ -22,38 +22,38 @@ import javafx.scene.control.cell.PropertyValueFactory;
 /**
  * FXML Controller class
  *
- * @author Luis Rangel
+ * @author Diego Pinzon
  */
 public class Recuperacion_viewController implements Initializable {
 
     @FXML
     private TextField tfId;
     @FXML
-    private TextField tfTitle;
-    @FXML
-    private TextField tfAuthor;
-    @FXML
-    private TextField tfYear;
-    @FXML
-    private TextField tfPages;
-    @FXML
-    private TableView<Books> tvBooks;
-    @FXML
-    private TableColumn<Books, Integer> colId;
-    @FXML
-    private TableColumn<Books, String> colTitle;
-    @FXML
-    private TableColumn<Books, String> colAuthor;
-    @FXML
-    private TableColumn<Books, Integer> colYear;
-    @FXML
-    private TableColumn<Books, Integer> colPages;
+    private TableColumn<Materia, Integer> colId;
     @FXML
     private Button btnInsert;
     @FXML
     private Button btnUpdate;
     @FXML
     private Button btnDelete;
+    @FXML
+    private TableColumn<Materia, String> colCatedratico;
+    @FXML
+    private TableColumn<Materia, String> colSalon;
+    @FXML
+    private TableColumn<Materia, Integer> colCiclo_Escolar;
+    @FXML
+    private TableColumn<Materia, Integer> colCupo_Maximo;
+    @FXML
+    private TextField tfCatedratico;
+    @FXML
+    private TextField tfSalon;
+    @FXML
+    private TextField tfCiclo_Escolar;
+    @FXML
+    private TextField tfCupo_Maximo;
+    @FXML
+    private TableView<Materia> tvMateria;
 
     /**
      * Initializes the controller class.
@@ -61,7 +61,7 @@ public class Recuperacion_viewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        showBooks();
+        showMateria();
     }
 
     @FXML
@@ -79,36 +79,36 @@ public class Recuperacion_viewController implements Initializable {
         }
     }
 
-    public ObservableList<Books> getBooksList() {
-        ObservableList<Books> bookList = FXCollections.observableArrayList();
+    public ObservableList<Materia> getMateriaList() {
+        ObservableList<Materia> materiaList = FXCollections.observableArrayList();
         Connection conn = getConnection();
-        String query = "SELECT * FROM books";
+        String query = "SELECT * FROM materia";
         Statement st;
         ResultSet rs;
 
         try {
             st = conn.createStatement();
             rs = st.executeQuery(query);
-            Books book;
+            Materia materia;
             while (rs.next()) {
-                book = new Books(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getInt("year"), rs.getInt("pages"));
-                bookList.add(book);
+                materia = new Materia(rs.getInt("id"), rs.getString("nombre"), rs.getInt("ciclo_escolar"), rs.getString("horario_inicio"), rs.getString("horario_final"), rs.getString("catedratico"), rs.getString("salon"), rs.getInt("cupo_maximo"), rs.getInt("cupo_minimo"));
+                materiaList.add(materia);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return bookList;
+        return materiaList;
     }
 
-    public void showBooks() {
-        ObservableList<Books> list = getBooksList();
+    public void showMateria() {
+        ObservableList<Materia> list = getMateriaList();
 
-        colId.setCellValueFactory(new PropertyValueFactory<Books, Integer>("id"));
-        colTitle.setCellValueFactory(new PropertyValueFactory<Books, String>("title"));
-        colAuthor.setCellValueFactory(new PropertyValueFactory<Books, String>("author"));
-        colYear.setCellValueFactory(new PropertyValueFactory<Books, Integer>("year"));
-        colPages.setCellValueFactory(new PropertyValueFactory<Books, Integer>("pages"));
+        colId.setCellValueFactory(new PropertyValueFactory<Materia, Integer>("id"));
+        colCatedratico.setCellValueFactory(new PropertyValueFactory<Materia, String>("catedratico"));
+        colSalon.setCellValueFactory(new PropertyValueFactory<Materia, String>("salon"));
+        colCiclo_Escolar.setCellValueFactory(new PropertyValueFactory<Materia, Integer>("ciclo_escolar"));
+        colCupo_Maximo.setCellValueFactory(new PropertyValueFactory<Materia, Integer>("cupo_maximo"));
 
-        tvBooks.setItems(list);
+        tvMateria.setItems(list);
     }
 }
